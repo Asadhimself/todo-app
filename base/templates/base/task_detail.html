@@ -1,0 +1,60 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="container m-5 rounded mx-auto bg-light shadow">
+    <div class="bg-dark row py-3  rounded">
+            <a href="{% url 'tasks' %}">
+                <h4>&#8592; Go back</h4>
+            </a>
+        </div>
+        <div class="row p-4">
+            {% if request.user == task.user %}
+        <div class="col">
+            <div class="p-1 text-center mx-auto display-inline-block">
+                <h2>
+                    <u>
+                        {{ task.title }}
+                    </u>
+                    <a href="{% url 'task-update' task.id %}">
+                        <i class="fa-sharp text-success fa-solid fa-pen-to-square"></i>
+                    </a>
+                </h2>
+            </div>
+            <div class="card-body">
+                {% if task.complete %}
+                    <p class="text-success">
+                    {% if task.description != "" %}
+                        Description: {{ task.description }};<br>
+                    {% endif %}
+                    &#9745; Task Already completed <br>
+                    Deadline was: {{ task.deadline }} <br>
+                    Created date: {{ task.created }}
+                    </p>
+                    {% else %}
+                    <p>
+                    {% if task.description != "" %}
+                        Description: {{ task.description }};<br>
+                    {% endif %}
+                     <i class="fa-regular bg-danger fa-octagon-xmark"></i>
+                        <i class="fa-solid text-danger fa-xmark"></i> Task is not completed yet;<br>
+                    {% if task.time_remain == 'Time is up!' %}
+                        <span class="text-danger">Deadline was broken!</span> <br>
+                        Broken at: <span class="text-danger">{{ task.deadline }}</span> <br>
+                        You can set new deadline
+                        <a class="text-success" href="{% url 'task-update' task.id %}">here</a> <br>
+                    {% else %}
+                        Deadline: <span class="text-{{ task.deadline_color }}">{{ task.deadline }}</span><br>
+                        Time remaining: {{ task.time_remain }} <br>
+                    {% endif %}
+                    Created date: {{ task.created }}.
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+            {% else %}
+            <h2>Task ID: {{ task.id }} is not yours!</h2>
+            {% endif %}
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/07478a3805.js" crossorigin="anonymous"></script>
+
+{% endblock content %}

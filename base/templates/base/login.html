@@ -1,0 +1,35 @@
+{% extends 'base/main.html' %}
+{% block content %}
+<div class="container m-5 rounded mx-auto bg-light shadow">
+    <!-- App title section -->
+    <div class="row p-4">
+        <div class="col">
+            <div class="p-1 text-center mx-auto display-inline-block">
+                <h2>Log In</h2>
+
+            </div>
+            <div class="card-body">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <h2>You can test out with preloaded testuser by submitting!</h2>
+                    <input type="text" name="username" value="testuser" style="margin-bottom:1em">
+                    <input type="password" name="password" value="pass.txt" style="margin-bottom:1em">
+                    <input class="px-5 btn btn-primary" type="submit" value="Log In">
+                </form>
+                <h2 class="mt-5">Don't have an account? <a class="link-primary" href="{% url 'register' %}">Register</a></h2>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<script src="https://kit.fontawesome.com/07478a3805.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+{% endblock content %}

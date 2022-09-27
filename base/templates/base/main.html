@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'base/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+    <title>To Do App</title>
+    <style>
+        body{
+            font-family: 'Oswold', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6{
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .task-complete{
+        height: 15px;
+        width: 15px;
+        background-color: darkred;
+        border-radius: 50%;
+        }
+
+        .task-incomplete{
+            height: 15px;
+            width: 15px;
+            background-color: rgb(218, 218, 218);
+            border-radius: 50%;
+        }
+                input[type=text],
+        input[type=password],
+        textarea{
+            border: 1px solid #EB796F;
+            border-radius: 5px;
+            padding: 10px;
+            width: 90%;
+        }
+
+        label{
+            padding-top: 10px !important;
+            display: block;
+        }
+
+        .button{
+            border: 1px solid #EB796F;
+            background-color: #FAFAFA;
+            color: #EB796F;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .card-body{
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    {% block content %}
+
+    {% endblock content %}
+</div>
+</body>
+</html>

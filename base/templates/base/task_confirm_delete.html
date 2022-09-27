@@ -1,0 +1,31 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="container m-5 rounded mx-auto bg-light shadow">
+    <div class="bg-dark row py-3  rounded">
+            <a href="{% url 'tasks' %}">
+                <h4>&#8592; Go back</h4>
+            </a>
+        </div>
+        <div class="row p-4">
+            {% if request.user == task.user %}
+        <div class="col">
+            <div class="p-1 text-center mx-auto display-inline-block">
+                <h2>Are you sure you want to delete "{{ task }}" ?</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <input class="px-5 btn btn-danger" type="submit" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
+            {% else %}
+            <h2>Task ID: {{ task.id }} is not yours!</h2>
+            {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}
